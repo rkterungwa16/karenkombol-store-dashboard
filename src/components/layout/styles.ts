@@ -8,7 +8,7 @@ export const StyledPageWrapper = styled.div`
         justify-content: ${props.justifyContent};
         align-items: ${props.alignItems};
         width: ${props.width};
-       height: ${props.height};
+        height: ${props.height};
       `;
   }}
 `;

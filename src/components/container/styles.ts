@@ -79,13 +79,28 @@ export const StyledHeaderContainer = styled.div`
       mx,
       my,
       breakpoint,
+      zIndex,
+      top,
+      bottom,
+      left,
+      right,
+      display,
+      justifyContent,
+      alignItems,
     } = props;
     const style = `
-      width: ${width};
-      height: ${height};
-      ${breakpointWidth[breakpoint ? breakpoint : "fluid"]}
-      top: 0;
-      z-index: 999;
+      ${breakpoint && breakpointWidth[breakpoint]}
+      ${width && `width: ${width};`}
+      ${height && `height: ${height};`}
+      ${zIndex && `z-index: ${zIndex};`}
+      ${top && `top: ${top};`}
+      ${bottom && `bottom: ${bottom};`}
+      ${left && `right: ${left};`}
+      ${right && `right: ${right};`}
+
+      ${display && `display: ${display};`}
+      ${justifyContent && `justify-content: ${justifyContent};`}
+      ${alignItems && `align-items: ${alignItems};`}
       ${generateComponentBoxAreaStyle({
         p,
         pb,
@@ -103,15 +118,6 @@ export const StyledHeaderContainer = styled.div`
         my,
       })}
     `;
-
-    if (props.display === "flex") {
-      return `
-        display: ${props.display};
-        justify-content: ${props.justifyContent};
-        align-items: ${props.alignItems};
-        ${style}
-      `;
-    }
     return style;
   }}
 `;
