@@ -4,10 +4,16 @@ export const breakpoints = {
   md: "768px",
   lg: "1024px",
   xl: "1280px",
-  "2xl": "1536px"
+  "2xl": "1536px",
 };
 
 export type Devices = {
+  xs: string;
+  sm: string;
+  md: string;
+  lg: string;
+  xl: string;
+  "2xl": string;
   [size: string]: string;
 };
 
@@ -17,5 +23,5 @@ export const devices: Devices = {
   md: `(min-width: ${breakpoints.md})`,
   lg: `(min-width: ${breakpoints.lg})`,
   xl: `(min-width: ${breakpoints.xl})`,
-  "2xl": `(min-width: ${breakpoints["2xl"]})`
+  "2xl": `(min-width: ${breakpoints["2xl"]})`,
 };
