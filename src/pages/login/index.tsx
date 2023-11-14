@@ -21,7 +21,13 @@ const Header = () => (
 
 export const Login = () => {
   return (
-    <Layout>
+    <Layout
+      height="100vh"
+      width="100%"
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+    >
       <LoginForm Header={Header} />
     </Layout>
   );

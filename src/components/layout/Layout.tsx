@@ -1,5 +1,7 @@
+import { FC } from "react";
 import styled from "styled-components";
-import { FC, ReactNode } from "react";
+import { StyledPageWrapper } from "./styles";
+import { LayoutProps } from "./types";
 
 export const StyledPageComponentsWrapper = styled.div`
   display: flex;
@@ -11,17 +13,6 @@ export const StyledPageComponentsWrapper = styled.div`
   padding: 0;
 `;
 
-export const StyledPageWrapper = styled.div`
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-`;
-
-export type LayoutProps = {
-  children: ReactNode;
-};
-
-export const Layout: FC<LayoutProps> = ({ children }) => (
-  <StyledPageWrapper>{children}</StyledPageWrapper>
+export const Layout: FC<LayoutProps> = ({ children, ...others }) => (
+  <StyledPageWrapper {...others}>{children}</StyledPageWrapper>
 );
