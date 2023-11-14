@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { devices, breakpoints } from '../../utils/breakpoint/breakpoint';
+import { devices, breakpoints } from '../../utils/breakpoints/breakpoints';
 
 export const StyledFormWrapper = styled.div`
   width: 100%;

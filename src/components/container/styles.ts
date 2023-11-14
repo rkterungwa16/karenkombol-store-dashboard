@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { generateComponentBoxAreaStyle } from "../../utils/box-area";
 import { StyledContainerProps } from "./types";
-import { devices } from "../../utils/breakpoint/breakpoint";
+import { devices } from "../../utils/breakpoints/breakpoints";
 
 export const breakpointWidth = {
   /**
