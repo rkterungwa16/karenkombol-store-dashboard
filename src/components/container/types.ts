@@ -26,7 +26,6 @@ export interface ContainerProps extends BoxAreaProps {
   zIndex?: CSSProperties['zIndex'];
   breakpoint?: ContainerBreakpoint;
   className?: string;
-  // [x: string]: string | number | ReactNode | undefined;
 }
 
 export interface StyledContainerProps extends StyledBoxAreaProps {
@@ -44,5 +43,4 @@ export interface StyledContainerProps extends StyledBoxAreaProps {
   $zIndex?: CSSProperties['zIndex'];
   $breakpoint?: ContainerBreakpoint;
   $className?: string;
-  // [x: string]: string | number | ReactNode | undefined;
 }
