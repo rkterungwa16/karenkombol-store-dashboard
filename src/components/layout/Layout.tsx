@@ -23,7 +23,5 @@ export type LayoutProps = {
 };
 
 export const Layout: FC<LayoutProps> = ({ children }) => (
-  <StyledPageWrapper>
-    <StyledPageComponentsWrapper>{children}</StyledPageComponentsWrapper>
-  </StyledPageWrapper>
+  <StyledPageWrapper>{children}</StyledPageWrapper>
 );
