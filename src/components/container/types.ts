@@ -1,5 +1,5 @@
 import { ReactNode, CSSProperties } from "react";
-import { BoxAreaProps } from "../../utils/box-area";
+import { BoxAreaProps, StyledBoxAreaProps } from "../../utils/box-area";
 
 /**
  * sm - Set container 100% wide until small breakpoint.
@@ -26,4 +26,23 @@ export interface ContainerProps extends BoxAreaProps {
   zIndex?: CSSProperties['zIndex'];
   breakpoint?: ContainerBreakpoint;
   className?: string;
+  // [x: string]: string | number | ReactNode | undefined;
+}
+
+export interface StyledContainerProps extends StyledBoxAreaProps {
+  children?: ReactNode;
+  $position?: CSSProperties["position"];
+  $top?: CSSProperties['top'];
+  $bottom?: CSSProperties['bottom'];
+  $left?: CSSProperties['left'];
+  $right?: CSSProperties['right'];
+  $display?: "flex" | "none";
+  $justifyContent?: CSSProperties["justifyContent"];
+  $alignItems?: CSSProperties["alignItems"];
+  $width?: CSSProperties["width"];
+  $height?: CSSProperties["height"];
+  $zIndex?: CSSProperties['zIndex'];
+  $breakpoint?: ContainerBreakpoint;
+  $className?: string;
+  // [x: string]: string | number | ReactNode | undefined;
 }

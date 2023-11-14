@@ -1,12 +1,11 @@
-import { BoxAreaProps } from "./types";
-
+import { StyledBoxAreaProps, boxAreaProps } from "./types";
 
 // margin-bottom: 0;
 export const boxAreas: {
   [x: string]: string;
 } = {
   p: "padding",
-  m: "margin"
+  m: "margin",
 };
 
 export const boxSides: {
@@ -17,7 +16,7 @@ export const boxSides: {
   l: "left",
   r: "right",
   x: "left right",
-  y: "top bottom"
+  y: "top bottom",
 };
 
 const spacing: {
@@ -33,7 +32,7 @@ const spacing: {
   7: 3,
   8: 3.5,
   9: 4,
-  10: 4.5
+  10: 4.5,
 };
 
 export const generateBoxAreaStyle = (props: string) => {
@@ -49,16 +48,21 @@ export const generateBoxAreaStyle = (props: string) => {
     ${boxAreas[boxArea]}-${second}: ${spacing[Number(spacingValue)]}rem;
     `;
   }
-  return `${boxAreas[boxArea]}-${boxSides[boxSide]}: ${spacing[Number(spacingValue)]}rem;`;
+  return `${boxAreas[boxArea]}-${boxSides[boxSide]}: ${
+    spacing[Number(spacingValue)]
+  }rem;`;
 };
 
-export const generateComponentBoxAreaStyle = (props: BoxAreaProps) => {
-  return Object.values(props)
+export const generateComponentBoxAreaStyle = (props: StyledBoxAreaProps) => {
+  const modifiedProps = Object.keys(props)
+    .filter((_key) => _key && boxAreaProps.includes(_key.replace("$", "")))
+    .map((_key) => props[_key as keyof StyledBoxAreaProps]);
+  return modifiedProps
     .filter((_prop) => _prop)
     .reduce((prev, curr) => {
       return `
       ${prev}
-      ${generateBoxAreaStyle(curr)}
+      ${curr ? generateBoxAreaStyle(curr) : ""}
     `;
     }, "");
 };

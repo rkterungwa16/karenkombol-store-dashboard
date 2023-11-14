@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { SignupForm } from "../../components/auth/Signup";
-import { Layout } from "../../components/layout/Layout";
+import { Container } from "../../components/container/Container";
 
 const StyledHomePageHeaderWrapper = styled.div`
   width: 100%;
@@ -21,15 +21,16 @@ const Header = () => (
 
 export const Signup = () => {
   return (
-    <Layout
+    <Container
       height="100vh"
       width="100%"
       display="flex"
       justifyContent="center"
       alignItems="center"
+      p = "p-0"
     >
       <SignupForm Header={Header} />
-    </Layout>
+    </Container>
   );
 };
 

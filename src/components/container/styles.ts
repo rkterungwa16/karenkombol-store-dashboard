@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { generateComponentBoxAreaStyle } from "../../utils/box-area";
-import { ContainerProps } from "./types";
+import { StyledContainerProps } from "./types";
 import { devices } from "../../utils/breakpoint/breakpoint";
 
 export const breakpointWidth = {
@@ -60,62 +60,36 @@ export const breakpointWidth = {
 };
 
 export const StyledHeaderContainer = styled.div`
-  ${(props: ContainerProps) => {
+  ${(props: StyledContainerProps) => {
     const {
-      width,
-      height,
-      p,
-      pb,
-      pt,
-      pl,
-      pr,
-      px,
-      py,
-      m,
-      ml,
-      mr,
-      mt,
-      mb,
-      mx,
-      my,
-      breakpoint,
-      zIndex,
-      top,
-      bottom,
-      left,
-      right,
-      display,
-      justifyContent,
-      alignItems,
+      $width,
+      $height,
+      $breakpoint,
+      $zIndex,
+      $top,
+      $bottom,
+      $left,
+      $right,
+      $display,
+      $justifyContent,
+      $alignItems,
+      ...others
     } = props;
     const style = `
-      ${breakpoint && breakpointWidth[breakpoint]}
-      ${width && `width: ${width};`}
-      ${height && `height: ${height};`}
-      ${zIndex && `z-index: ${zIndex};`}
-      ${top && `top: ${top};`}
-      ${bottom && `bottom: ${bottom};`}
-      ${left && `right: ${left};`}
-      ${right && `right: ${right};`}
+      ${$breakpoint ? breakpointWidth[$breakpoint] : ""}
+      ${$width ? `width: ${$width};` : ""}
+      ${$height ? `height: ${$height};` : ""}
+      ${$zIndex ? `z-index: ${$zIndex};` : ""}
+      ${$top ? `top: ${$top};` : ""}
+      ${$bottom ? `bottom: ${$bottom};` : ""}
+      ${$left ? `right: ${$left};` : ""}
+      ${$right ? `right: ${$right};` : ""}
 
-      ${display && `display: ${display};`}
-      ${justifyContent && `justify-content: ${justifyContent};`}
-      ${alignItems && `align-items: ${alignItems};`}
+      ${$display ? `display: ${$display};` : ""}
+      ${$justifyContent ? `justify-content: ${$justifyContent};` : ""}
+      ${$alignItems ? `align-items: ${$alignItems};` : ""}
       ${generateComponentBoxAreaStyle({
-        p,
-        pb,
-        pt,
-        pl,
-        pr,
-        px,
-        py,
-        m,
-        ml,
-        mr,
-        mt,
-        mb,
-        mx,
-        my,
+        ...others,
       })}
     `;
     return style;
