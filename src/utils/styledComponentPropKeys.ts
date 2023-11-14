@@ -1,4 +1,4 @@
-export const mapStyledComponentPropKeys = (props: {
+export const generateStyledComponentPropKeys = (props: {
   [x: string]: string | number;
 }) => {
   return Object.keys(props).reduce(
