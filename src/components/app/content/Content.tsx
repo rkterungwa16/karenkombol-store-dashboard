@@ -1,6 +1,7 @@
-
 import styled from "styled-components";
 import { FC, ReactNode } from "react";
+import { ContentLayout } from "./ContentLayout";
+import { Header } from "../../header/Header";
 
 export const StyledContent = styled.div`
   position: relative;
@@ -9,14 +10,13 @@ export const StyledContent = styled.div`
   background: #f3f4f7;
 `;
 
-
 export type ContentProps = {
-  children: ReactNode;
+  children?: ReactNode;
 };
 
 export const Content: FC<ContentProps> = ({ children }) => (
-  <StyledContent>
-    {children}
-  </StyledContent>
+  <ContentLayout>
+    <Header />
+    <StyledContent>{children}</StyledContent>
+  </ContentLayout>
 );
-

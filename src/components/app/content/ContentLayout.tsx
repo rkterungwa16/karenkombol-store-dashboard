@@ -1,11 +1,10 @@
 import styled from "styled-components";
 import { FC, ReactNode } from "react";
-import { Header } from "../../header/Header";
 
 export const StyledContentLayout = styled.div`
-  min-height: 56px;
-  background: #f6f9fc;
-  width: calc(100% - 240px);
+  height: 100%;
+  background: #DDE0DA;
+  width: calc(100% - 300px);
 `;
 
 export type ContentLayoutProps = {
@@ -13,8 +12,5 @@ export type ContentLayoutProps = {
 };
 
 export const ContentLayout: FC<ContentLayoutProps> = ({ children }) => (
-  <StyledContentLayout>
-    <Header />
-    <ContentLayout>{children}</ContentLayout>
-  </StyledContentLayout>
+  <StyledContentLayout>{children}</StyledContentLayout>
 );

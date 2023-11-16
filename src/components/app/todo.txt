@@ -1,0 +1,17 @@
+// COLLAPSED
+// .page-sidebar-collapsed .page-content {
+//   width: calc(100% - 60px);
+// }
+
+// MOBILE
+// @media screen and (max-width: 991px)
+// .page-sidebar-fixed .page-content, .page-sidebar-fixed.page-sidebar-collapsed .page-content {
+//     margin-left: 0px;
+// }
+// .page-sidebar-fixed .page-content {
+//   margin-left: 240px;
+// }
+// @media screen and (max-width: 991px)
+// .page-content, .page-sidebar-collapsed .page-content {
+//     width: 100%;
+// }

@@ -3,20 +3,21 @@ import { Route, BrowserRouter, Routes } from "react-router-dom";
 
 // import PrivateRoute from "./components/private-route";
 
-const Login = lazy(() => import("./pages/login"));
-const Signup = lazy(() => import("./pages/signup"));
+const LoginPage = lazy(() => import("./pages/login"));
+const SignupPage = lazy(() => import("./pages/signup"));
+const AppPage = lazy(() => import("./pages/app"));
 
 class App extends Component {
   render() {
     return (
       <BrowserRouter basename="/">
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<LoginPage />} />
           <Route
             path="/signup"
             element={
               <Suspense fallback={<>...</>}>
-                <Signup />
+                <SignupPage />
               </Suspense>
             }
           />
@@ -24,7 +25,15 @@ class App extends Component {
             path="/login"
             element={
               <Suspense fallback={<>...</>}>
-                <Login />
+                <LoginPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/dashboard"
+            element={
+              <Suspense fallback={<>...</>}>
+                <AppPage />
               </Suspense>
             }
           />

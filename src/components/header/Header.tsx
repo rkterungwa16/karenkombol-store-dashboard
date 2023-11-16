@@ -14,7 +14,7 @@ const StyledHeader = styled.header`
   position: relative;
   padding-top: 0;
   padding-right: 0;
-  background: #f6f9fc;
+  background: #ffffff;
   z-index: 1000;
 `;
 export type HeaderProps = {
