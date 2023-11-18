@@ -7,8 +7,12 @@ export interface LinkAttrProps extends AllHTMLAttributes<HTMLElement> {
   href?: string;
 }
 
+export type CustomLinkProps = Record<string, unknown>;
 export interface LinkProps
   extends LinkAttrProps,
     AllHTMLAttributes<HTMLElement> {
-  component?: string | ElementType;
+  customLink?: {
+    component: ElementType;
+    props: CustomLinkProps;
+  };
 }
