@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { FC, ReactNode } from "react";
 
-export const StyledSidebarNav = styled.nav`
+export const StyledSidebarNav = styled.ul`
   position: relative;
   display: flex;
   flex: 1 1;

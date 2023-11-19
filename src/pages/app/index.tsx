@@ -1,7 +1,7 @@
 
 import { Layout } from "../../components/layout/Layout";
-import { Sidebar } from "../../components/app/sidebar/Sidebar";
 import { Content } from "../../components/app/content/Content";
+import { AppSidebar } from "../../components/app/sidebar/AppSidebar";
 
 export const App = () => {
   return (
@@ -12,7 +12,7 @@ export const App = () => {
       justifyContent="center"
       alignItems="center"
     >
-      <Sidebar />
+      <AppSidebar />
       <Content />
     </Layout>
   );

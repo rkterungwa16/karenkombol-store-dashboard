@@ -2,10 +2,12 @@ import { forwardRef } from "react";
 import { Link, LinkProps } from "../link";
 
 export const NavItem = forwardRef<HTMLLIElement, LinkProps>(
-  ({ children, className, ...rest }, ref) => {
-    if (rest.href || rest.customLink?.props?.to) {
+  ({ children, className, href, customLink, ...rest }, ref) => {
+    console.log('href', href);
+    if (href || customLink?.props?.to) {
+       console.log('href', customLink);
       children = (
-        <Link className={className} {...rest}>
+        <Link className={className} {...rest} href={href}>
           {children}
         </Link>
       );
