@@ -1,17 +1,26 @@
-import { CSSProperties, forwardRef, ReactNode, useRef, useState } from "react";
+import {
+  CSSProperties,
+  forwardRef,
+  ReactElement,
+  ReactNode,
+  useRef,
+  useState,
+} from "react";
 import { Transition } from "react-transition-group";
-import { Link } from "../link";
+import { NavItem } from "./NavItem";
 
-export interface CNavGroupProps {
+export interface NavGroupProps {
   children?: ReactNode;
   className?: string;
   toggler?: string | ReactNode;
+  icon?: ReactElement;
   handleSetCurrentOpenItem?: (value: string) => void;
   visible?: boolean;
   idx?: string;
+  href?: string;
 }
 
-export const NavGroup = forwardRef<HTMLLIElement, CNavGroupProps>(
+export const NavGroup = forwardRef<HTMLLIElement, NavGroupProps>(
   (
     {
       children,
@@ -20,6 +29,7 @@ export const NavGroup = forwardRef<HTMLLIElement, CNavGroupProps>(
       toggler,
       handleSetCurrentOpenItem,
       visible,
+      icon,
       ...rest
     },
     ref,
@@ -74,8 +84,16 @@ export const NavGroup = forwardRef<HTMLLIElement, CNavGroupProps>(
     };
     console.log("visible ____", visible);
     return (
-      <li className={className} {...rest} ref={ref}>
-        {toggler && <Link onClick={handleTogglerOnCLick}>{toggler}</Link>}
+      <li
+        className={className}
+        // onClick={handleTogglerOnCLick}
+        ref={ref}
+      >
+        {toggler && (
+          <NavItem {...rest} icon={icon} onClick={handleTogglerOnCLick}>
+            {toggler}
+          </NavItem>
+        )}
         <Transition
           in={visible}
           timeout={300}
