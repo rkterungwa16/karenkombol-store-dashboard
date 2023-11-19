@@ -1,21 +1,51 @@
-import { forwardRef } from "react";
+import { ReactElement, forwardRef } from "react";
 import { Link, LinkProps } from "../link";
+import { StyledLi } from "./styles";
+import { generateStyledComponentPropKeys } from "../../utils/styledComponentPropKeys";
+import { BoxAreaProps } from "../../utils/box-area";
 
-export const NavItem = forwardRef<HTMLLIElement, LinkProps>(
-  ({ children, className, href, customLink, ...rest }, ref) => {
-    console.log('href', href);
+export interface NavItemProps extends LinkProps, BoxAreaProps {
+  icon?: ReactElement;
+}
+export const NavItem = forwardRef<HTMLLIElement, NavItemProps>(
+  (
+    {
+      children,
+      className,
+      href,
+      customLink,
+      icon,
+      onClick,
+      active,
+      disabled,
+      ...others
+    },
+    ref,
+  ) => {
+    console.log("href", href);
     if (href || customLink?.props?.to) {
-       console.log('href', customLink);
       children = (
-        <Link className={className} {...rest} href={href}>
+        <Link
+          className={className}
+          active={active}
+          disabled={disabled}
+          {...others}
+          href={href}
+          onClick={onClick}
+        >
           {children}
         </Link>
       );
     }
     return (
-      <li className={className} ref={ref}>
+      <StyledLi
+        className={className}
+        ref={ref}
+        {...generateStyledComponentPropKeys(others)}
+      >
+        {icon && icon}
         {children}
-      </li>
+      </StyledLi>
     );
   },
 );
