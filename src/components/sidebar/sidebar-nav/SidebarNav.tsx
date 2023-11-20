@@ -4,8 +4,8 @@ import {
   BoxAreaProps,
   StyledBoxAreaProps,
   generateComponentBoxAreaStyle,
-} from "../../../../utils/box-area";
-import { generateStyledComponentPropKeys } from "../../../../utils/styledComponentPropKeys";
+} from "../../../utils/box-area";
+import { generateStyledComponentPropKeys } from "../../../utils/styledComponentPropKeys";
 
 export interface StyledSidebarNavProps extends StyledBoxAreaProps {
   children?: ReactNode;

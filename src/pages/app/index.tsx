@@ -1,7 +1,7 @@
 
 import { Layout } from "../../components/layout/Layout";
 import { Content } from "../../components/app/content/Content";
-import { AppSidebar } from "../../components/app/sidebar/AppSidebar";
+import { AppSidebar } from "../../components/app/AppSidebar";
 
 export const App = () => {
   return (

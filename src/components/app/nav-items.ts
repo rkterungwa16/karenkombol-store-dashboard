@@ -1,8 +1,8 @@
 // import { CNavGroup, NavItem, CNavTitle } from './'
 
-import { RectangularGroupIcon, TagIcon } from "../../../icons";
-import { NavGroup } from "../../../nav/NavGroup";
-import { NavItem } from "../../../nav/NavItem";
+import { RectangularGroupIcon, TagIcon } from "../icons";
+import { NavGroup } from "../nav/NavGroup";
+import { NavItem } from "../nav/NavItem";
 
 export const navItems = [
   {
