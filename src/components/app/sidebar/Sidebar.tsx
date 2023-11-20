@@ -4,7 +4,7 @@ import { SidebarHeader } from "./SidebarHeader";
 
 export const StyledSidebar = styled.div`
   width: 300px;
-  background: #716272cc;
+  background: #ffffff;
   min-height: 100%;
   float: left;
   z-index: 100;
