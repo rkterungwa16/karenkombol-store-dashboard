@@ -1,6 +1,5 @@
-import { Sidebar } from "../sidebar/Sidebar";
+import { Sidebar, SidebarNav } from "../sidebar";
 import { navItems } from "./nav-items";
-import { SidebarNav } from "../sidebar/sidebar-nav/SidebarNav";
 
 export const AppSidebar = () => {
   return (
