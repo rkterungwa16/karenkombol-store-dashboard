@@ -1,7 +1,10 @@
+import { useScreenBreakpoint } from "../../utils/hooks/useScreenBreakpoint";
 import { Sidebar, SidebarNav } from "../sidebar";
 import { navItems } from "./nav-items";
 
 export const AppSidebar = () => {
+  const isMobile = useScreenBreakpoint('xs');
+  console.log("isMobile", isMobile);
   return (
     <Sidebar>
       {({ currentOpenItem, handleSetCurrentOpenItem }) => {
@@ -40,11 +43,7 @@ export const AppSidebar = () => {
                       // active={false}
                       // className=""
                       // disabled={false}
-                      toggler={
-                        <>
-                          {name && name}
-                        </>
-                      }
+                      toggler={<>{name && name}</>}
                       {...(Icon && { icon: <Icon /> })}
                       key={name}
                       handleSetCurrentOpenItem={handleSetCurrentOpenItem}

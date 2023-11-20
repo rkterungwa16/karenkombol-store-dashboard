@@ -9,6 +9,11 @@ export const StyledSidebar = styled.div`
   float: left;
   z-index: 100;
   position: relative;
+  @media screen and (max-width: 991px) {
+    position: fixed;
+    left: -300px;
+    transition: all .2s ease-in-out;
+  }
 `;
 
 export type SidebarProps = {
