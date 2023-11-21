@@ -1,11 +1,12 @@
 import { ReactElement, forwardRef } from "react";
 import { Link, LinkProps } from "../link";
-import { StyledLi } from "./styles";
+import { mapNavItemElements } from "./styles";
 import { generateStyledComponentPropKeys } from "../../utils/styledComponentPropKeys";
 import { BoxAreaProps } from "../../utils/box-area";
 
 export interface NavItemProps extends LinkProps, BoxAreaProps {
   icon?: ReactElement;
+  component?: string;
 }
 export const NavItem = forwardRef<HTMLLIElement, NavItemProps>(
   (
@@ -18,18 +19,18 @@ export const NavItem = forwardRef<HTMLLIElement, NavItemProps>(
       onClick,
       active,
       disabled,
+      component = 'li',
       ...others
     },
     ref,
   ) => {
-    console.log("href", href);
     if (href || customLink?.props?.to) {
       children = (
         <Link
           className={className}
           active={active}
           disabled={disabled}
-          {...others}
+          // {...others}
           href={href}
           onClick={onClick}
         >
@@ -37,15 +38,16 @@ export const NavItem = forwardRef<HTMLLIElement, NavItemProps>(
         </Link>
       );
     }
+    const Component = mapNavItemElements[component]
     return (
-      <StyledLi
+      <Component
         className={className}
         ref={ref}
         {...generateStyledComponentPropKeys(others)}
       >
         {icon && icon}
         {children}
-      </StyledLi>
+      </Component>
     );
   },
 );

@@ -36,7 +36,7 @@ export const Sidebar: FC<SidebarProps> = ({ children }) => {
       setCurrentOpenItem(value);
     }
   };
-  console.log('currentOpenItem', currentOpenItem);
+
   return (
     <StyledSidebar>
       <SidebarHeader />

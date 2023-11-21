@@ -8,8 +8,6 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
     { children, active, className, customLink, disabled, href, ...rest },
     ref,
   ) => {
-    console.log('___link__href', href);
-    console.log('___link__custom link', customLink)
     if (customLink) {
       const customLinkProps = customLink.props;
       const Component = customLink.component;

@@ -43,6 +43,7 @@ export const NavGroup = forwardRef<HTMLLIElement, NavGroupProps>(
 
     const style: CSSProperties = {
       height: 0,
+      transition: ".4s ease-out",
     };
 
     const onEntering = () => {
@@ -82,15 +83,16 @@ export const NavGroup = forwardRef<HTMLLIElement, NavGroupProps>(
       exiting: { display: "block", height: height },
       exited: { height: height },
     };
-    console.log("visible ____", visible);
+
     return (
-      <li
-        className={className}
-        // onClick={handleTogglerOnCLick}
-        ref={ref}
-      >
+      <li className={className} onClick={handleTogglerOnCLick} ref={ref}>
         {toggler && (
-          <NavItem {...rest} icon={icon} onClick={handleTogglerOnCLick}>
+          <NavItem
+            component="div"
+            {...rest}
+            icon={icon}
+            onClick={handleTogglerOnCLick}
+          >
             {toggler}
           </NavItem>
         )}
@@ -102,13 +104,14 @@ export const NavGroup = forwardRef<HTMLLIElement, NavGroupProps>(
           onExit={onExit}
           onExiting={onExiting}
           onExited={onExited}
+          nodeRef={navItemsRef}
         >
           {(state) => (
             <ul
-              style={{ ...style, ...transitionStyles[state] }}
               ref={navItemsRef}
+              style={{ ...style, ...transitionStyles[state] }}
             >
-              {visible ? children : null}
+              {children}
             </ul>
           )}
         </Transition>
