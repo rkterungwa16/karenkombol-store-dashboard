@@ -43,7 +43,7 @@ export const NavGroup = forwardRef<HTMLLIElement, NavGroupProps>(
 
     const style: CSSProperties = {
       height: 0,
-      transition: ".4s ease-out",
+      transition: ".15s ease-out",
     };
 
     const onEntering = () => {
