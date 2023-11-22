@@ -3,7 +3,7 @@ import { Sidebar, SidebarNav } from "../sidebar";
 import { navItems } from "./nav-items";
 
 export const AppSidebar = () => {
-  const isMobile = useScreenBreakpoint('xs');
+  const isMobile = useScreenBreakpoint("xs");
   console.log("isMobile", isMobile);
   return (
     <Sidebar>
@@ -20,12 +20,6 @@ export const AppSidebar = () => {
                       // active={false}
                       // className=""
                       // disabled={false}
-                      // customLink={{
-                      //   component: Link,
-                      //   props: {
-                      //     to,
-                      //   },
-                      // }}
                       href={to}
                       key={name}
                       {...(Icon && { icon: <Icon /> })}
@@ -36,14 +30,14 @@ export const AppSidebar = () => {
                 }
 
                 if (_item.type === "group") {
-                  const { component, items, name, icon: Icon, to } = _item;
+                  const { component, items, name, icon: Icon } = _item;
                   const Component = component;
                   return (
                     <Component
                       // active={false}
                       // className=""
                       // disabled={false}
-                      toggler={<>{name && name}</>}
+                      toggler={<div style={{ padding: "0.8445rem 1rem"}}>{name && name}</div>}
                       {...(Icon && { icon: <Icon /> })}
                       key={name}
                       handleSetCurrentOpenItem={handleSetCurrentOpenItem}
@@ -51,7 +45,6 @@ export const AppSidebar = () => {
                         currentOpenItem === name.toLowerCase() ? true : false
                       }
                       idx={name.toLowerCase()}
-                      href={to}
                     >
                       {items
                         ? items?.map((_item, index) => {
@@ -62,12 +55,6 @@ export const AppSidebar = () => {
                                 // active={false}
                                 // className=""
                                 // disabled={false}
-                                // customLink={{
-                                //   component: Link,
-                                //   props: {
-                                //     to,
-                                //   },
-                                // }}
                                 href={to}
                                 key={index}
                                 pl="pl-4"

@@ -3,7 +3,7 @@ import classNames from "classnames";
 import { LinkProps } from "./types";
 import { StyledLink } from "./styles";
 
-export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
+export const CustomLink = forwardRef<HTMLAnchorElement, LinkProps>(
   (
     { children, active, className, customLink, disabled, href, ...rest },
     ref,

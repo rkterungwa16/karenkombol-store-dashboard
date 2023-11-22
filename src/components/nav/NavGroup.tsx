@@ -85,7 +85,7 @@ export const NavGroup = forwardRef<HTMLLIElement, NavGroupProps>(
     };
 
     return (
-      <li className={className} onClick={handleTogglerOnCLick} ref={ref}>
+      <li className={className} ref={ref}>
         {toggler && (
           <NavItem
             component="div"

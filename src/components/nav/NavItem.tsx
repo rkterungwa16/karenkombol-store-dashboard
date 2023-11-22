@@ -1,10 +1,11 @@
 import { ReactElement, forwardRef } from "react";
-import { Link, LinkProps } from "../link";
+import { CustomLink, LinkAttrProps } from "../link";
 import { mapNavItemElements } from "./styles";
 import { generateStyledComponentPropKeys } from "../../utils/styledComponentPropKeys";
 import { BoxAreaProps } from "../../utils/box-area";
+import { StyledRouterLink } from "../link/styles";
 
-export interface NavItemProps extends LinkProps, BoxAreaProps {
+export interface NavItemProps extends LinkAttrProps, BoxAreaProps {
   icon?: ReactElement;
   component?: string;
 }
@@ -14,7 +15,6 @@ export const NavItem = forwardRef<HTMLLIElement, NavItemProps>(
       children,
       className,
       href,
-      customLink,
       icon,
       onClick,
       active,
@@ -24,18 +24,23 @@ export const NavItem = forwardRef<HTMLLIElement, NavItemProps>(
     },
     ref,
   ) => {
-    if (href || customLink?.props?.to) {
+    if (href) {
       children = (
-        <Link
+        <CustomLink
           className={className}
           active={active}
           disabled={disabled}
           // {...others}
-          href={href}
           onClick={onClick}
+          customLink={{
+            component: StyledRouterLink,
+            props: {
+              to: href
+            }
+          }}
         >
           {children}
-        </Link>
+        </CustomLink>
       );
     }
     const Component = mapNavItemElements[component]
