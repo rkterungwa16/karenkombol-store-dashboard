@@ -49,6 +49,7 @@ export const NavItem = forwardRef<HTMLLIElement, NavItemProps>(
         className={className}
         ref={ref}
         {...generateStyledComponentPropKeys(others)}
+        onClick={onClick}
       >
         {icon && icon}
         {children}
