@@ -3,8 +3,9 @@
 import { RectangularGroupIcon, TagIcon } from "../icons";
 import { NavGroup } from "../nav/NavGroup";
 import { NavItem } from "../nav/NavItem";
+import { NavItemDataProps } from "../sidebar/types";
 
-export const navItems = [
+export const navItems: NavItemDataProps[] = [
   {
     component: NavItem,
     type: "item",
@@ -18,6 +19,7 @@ export const navItems = [
     type: "group",
     to: "/dashboard/products",
     icon: TagIcon,
+    isOpen: false,
     items: [
       {
         component: NavItem,

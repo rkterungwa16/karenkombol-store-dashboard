@@ -34,7 +34,8 @@ export const NavGroup = forwardRef<HTMLLIElement, NavGroupProps>(
     },
     ref,
   ) => {
-    const [height, setHeight] = useState<number | string>();
+
+    const [height, setHeight] = useState<number | string>(0);
     const navItemsRef = useRef<HTMLUListElement>(null);
 
     const handleTogglerOnCLick = () => {
