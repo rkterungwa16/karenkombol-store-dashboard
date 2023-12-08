@@ -9,6 +9,7 @@ export const StyledLink = styled.a`
   display: flex;
   cursor: pointer;
   color: inherit;
+  width: 100%;
 `;
 
 export const StyledRouterLink = styled(Link)`
@@ -17,7 +18,7 @@ export const StyledRouterLink = styled(Link)`
   align-items: center;
   padding: 0.8445rem 1rem;
   display: flex;
-  cursor: pointer;
   color: inherit;
+  width: 100%;
 `;
 

@@ -34,7 +34,6 @@ export const NavGroup = forwardRef<HTMLLIElement, NavGroupProps>(
     },
     ref,
   ) => {
-
     const [height, setHeight] = useState<number | string>(0);
     const navItemsRef = useRef<HTMLUListElement>(null);
 
@@ -86,13 +85,19 @@ export const NavGroup = forwardRef<HTMLLIElement, NavGroupProps>(
     };
 
     return (
-      <li className={className} ref={ref}>
+      <NavItem className={className} ref={ref}>
         {toggler && (
           <NavItem
             component="div"
             {...rest}
             icon={icon}
             onClick={handleTogglerOnCLick}
+            alignItems="center"
+            display="flex"
+            hover={{
+              background: "#f0eff0",
+              color: "#99848b",
+            }}
           >
             {toggler}
           </NavItem>
@@ -116,7 +121,7 @@ export const NavGroup = forwardRef<HTMLLIElement, NavGroupProps>(
             </ul>
           )}
         </Transition>
-      </li>
+      </NavItem>
     );
   },
 );

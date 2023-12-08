@@ -38,7 +38,7 @@ export const Sidebar: FC<SidebarProps> = ({ navItems }) => {
         _item.name.toLowerCase() === name.toLowerCase() &&
         _item.type === "group",
     );
-    console.log("itemExists___", itemExists);
+
     if (itemExists) {
       const modifiedItems = items.map((_item) => {
         if (_item.name.toLowerCase() === name.toLowerCase()) {
@@ -66,9 +66,15 @@ export const Sidebar: FC<SidebarProps> = ({ navItems }) => {
                 // active={false}
                 // className=""
                 // disabled={false}
+                hover={{
+                  background: "#f0eff0",
+                  color: "#99848b",
+                }}
                 href={to}
                 key={name}
                 {...(Icon && { icon: <Icon /> })}
+                display="flex"
+                alignItems="center"
               >
                 {name && name}
               </Component>
@@ -106,6 +112,12 @@ export const Sidebar: FC<SidebarProps> = ({ navItems }) => {
                           href={to}
                           key={index}
                           pl="pl-4"
+                          display="flex"
+                          alignItems="center"
+                          hover={{
+                            background: "#f0eff0",
+                            color: "#99848b",
+                          }}
                         >
                           {name && name}
                         </Component>
