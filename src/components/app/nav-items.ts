@@ -1,5 +1,6 @@
 // import { CNavGroup, NavItem, CNavTitle } from './'
 
+import { ClientRoutes, ProductClientRoutes } from "../../routes/client";
 import { RectangularGroupIcon, TagIcon } from "../icons";
 import { NavGroup } from "../nav/NavGroup";
 import { NavItem } from "../nav/NavItem";
@@ -10,36 +11,48 @@ export const navItems: NavItemDataProps[] = [
     component: NavItem,
     type: "item",
     name: "Dashboard",
-    to: "/dashboard",
+    to: ClientRoutes.DASHBOARD,
     icon: RectangularGroupIcon,
   },
   {
     component: NavGroup,
     name: "Products",
     type: "group",
-    to: "/dashboard/products",
+    to: ClientRoutes.PRODUCT,
     icon: TagIcon,
     isOpen: false,
     items: [
       {
         component: NavItem,
         name: "Categories",
-        to: "/dashboard/products/categories",
+        to: ProductClientRoutes.PRODUCT_CATEGORIES.replace(
+          "{products}",
+          ClientRoutes.PRODUCT,
+        ),
       },
       {
         component: NavItem,
         name: "Collections",
-        to: "/dashboard/products/collections",
+        to: ProductClientRoutes.PRODUCT_COLLECTIONS.replace(
+          "{products}",
+          ClientRoutes.PRODUCT,
+        ),
       },
       {
         component: NavItem,
         name: "Shirts",
-        to: "/dashboard/products/shirts",
+        to: ProductClientRoutes.PRODUCT_SHIRTS.replace(
+          "{products}",
+          ClientRoutes.PRODUCT,
+        ),
       },
       {
         component: NavItem,
         name: "Dresses",
-        to: "/dashboard/products/dresses",
+        to: ProductClientRoutes.PRODUCT_DRESSES.replace(
+          "{products}",
+          ClientRoutes.PRODUCT,
+        ),
       },
     ],
   },
