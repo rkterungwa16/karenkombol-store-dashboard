@@ -2,7 +2,7 @@ import { Content } from "../../components/app/content/Content";
 import { AppSidebar } from "../../components/app/AppSidebar";
 import { Container } from "../../components/container/Container";
 
-export const App = () => {
+export const Dashboard = () => {
   return (
     <Container
       height="100vh"
@@ -18,4 +18,4 @@ export const App = () => {
   );
 };
 
-export default App;
+export default Dashboard;

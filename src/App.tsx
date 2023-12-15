@@ -1,11 +1,12 @@
 import { Component, Suspense, lazy } from "react";
 import { Route, BrowserRouter, Routes } from "react-router-dom";
+import { ClientRoutes } from "./routes/client";
 
 // import PrivateRoute from "./components/private-route";
 
 const LoginPage = lazy(() => import("./pages/login"));
 const SignupPage = lazy(() => import("./pages/signup"));
-const AppPage = lazy(() => import("./pages/app"));
+const DashboardPage = lazy(() => import("./pages/dashboard"));
 
 class App extends Component {
   render() {
@@ -14,7 +15,7 @@ class App extends Component {
         <Routes>
           <Route path="/" element={<LoginPage />} />
           <Route
-            path="/signup"
+            path={ClientRoutes.SIGNUP}
             element={
               <Suspense fallback={<>...</>}>
                 <SignupPage />
@@ -22,7 +23,7 @@ class App extends Component {
             }
           />
           <Route
-            path="/login"
+            path={ClientRoutes.LOGIN}
             element={
               <Suspense fallback={<>...</>}>
                 <LoginPage />
@@ -30,10 +31,10 @@ class App extends Component {
             }
           />
           <Route
-            path="/dashboard"
+            path={ClientRoutes.DASHBOARD}
             element={
               <Suspense fallback={<>...</>}>
-                <AppPage />
+                <DashboardPage />
               </Suspense>
             }
           />
