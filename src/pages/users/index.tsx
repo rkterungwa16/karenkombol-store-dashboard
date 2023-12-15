@@ -1,7 +1,7 @@
 import { Content } from "../../components/app/content/Content";
 import AppContainer from "../../components/app/AppContainer";
 
-export const Dashboard = () => {
+export const Users = () => {
   return (
     <AppContainer>
       <Content></Content>
@@ -9,4 +9,4 @@ export const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Users;

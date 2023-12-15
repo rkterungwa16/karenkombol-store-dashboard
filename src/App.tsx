@@ -7,6 +7,9 @@ import { ClientRoutes } from "./routes/client";
 const LoginPage = lazy(() => import("./pages/login"));
 const SignupPage = lazy(() => import("./pages/signup"));
 const DashboardPage = lazy(() => import("./pages/dashboard"));
+const ProductsPage = lazy(() => import("./pages/products"));
+const RolesPage = lazy(() => import("./pages/roles"));
+const UsersPage = lazy(() => import("./pages/users"));
 
 class App extends Component {
   render() {
@@ -42,7 +45,23 @@ class App extends Component {
             path={`${ClientRoutes.PRODUCT}/:category`}
             element={
               <Suspense fallback={<>...</>}>
-                <DashboardPage />
+                <ProductsPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path={`${ClientRoutes.ROLES}`}
+            element={
+              <Suspense fallback={<>...</>}>
+                <RolesPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path={`${ClientRoutes.USERS}`}
+            element={
+              <Suspense fallback={<>...</>}>
+                <UsersPage />
               </Suspense>
             }
           />
