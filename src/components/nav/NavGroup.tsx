@@ -34,32 +34,47 @@ export const NavGroup = forwardRef<HTMLLIElement, NavGroupProps>(
     },
     ref,
   ) => {
-    const [height, setHeight] = useState<number | string>(0);
+    // const [height, setHeight] = useState<number | string>(0);
+    const [style, setStyle] = useState<CSSProperties>({
+      display: "block",
+      height: 0,
+      visibility: "hidden",
+      transition: ".15s ease-out",
+    });
     const navItemsRef = useRef<HTMLUListElement>(null);
 
     const handleTogglerOnCLick = () => {
       handleSetCurrentOpenItem?.(idx ? idx : "");
     };
 
-    const style: CSSProperties = {
-      height: 0,
-      transition: ".15s ease-out",
-    };
-
     const onEntering = () => {
       navItemsRef &&
         navItemsRef.current &&
-        setHeight(navItemsRef.current.scrollHeight);
+        // setHeight(navItemsRef.current.scrollHeight);
+        setStyle({
+          ...style,
+          height: navItemsRef?.current?.scrollHeight,
+          visibility: "visible",
+        });
     };
 
     const onEntered = () => {
-      setHeight("auto");
+      // setHeight("auto");
+      setStyle({
+        ...style,
+        height: "auto",
+      });
     };
 
     const onExit = () => {
       navItemsRef &&
         navItemsRef.current &&
-        setHeight(navItemsRef.current.scrollHeight);
+        // setHeight(navItemsRef.current.scrollHeight);
+        setStyle({
+          ...style,
+          height: navItemsRef?.current?.scrollHeight,
+          visibility: "visible",
+        });
     };
 
     const onExiting = () => {
@@ -67,21 +82,31 @@ export const NavGroup = forwardRef<HTMLLIElement, NavGroupProps>(
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const reflow =
         navItemsRef && navItemsRef.current && navItemsRef.current.offsetHeight;
-      setHeight(0);
+      // setHeight(0);
+      setStyle({
+        ...style,
+        height: 0,
+        visibility: "hidden",
+      });
     };
 
     const onExited = () => {
-      setHeight(0);
+      // setHeight(0);
+      setStyle({
+        ...style,
+        height: 0,
+        visibility: "hidden",
+      });
     };
 
     const transitionStyles: Record<
       string,
       { [x: string]: string | number | undefined }
     > = {
-      entering: { display: "block", height: height },
-      entered: { display: "block", height: height },
-      exiting: { display: "block", height: height },
-      exited: { height: height },
+      entering: { ...style },
+      entered: { ...style },
+      exiting: { ...style },
+      exited: { height: style.height, visibility: style.visibility },
     };
 
     return (
@@ -113,10 +138,7 @@ export const NavGroup = forwardRef<HTMLLIElement, NavGroupProps>(
           nodeRef={navItemsRef}
         >
           {(state) => (
-            <ul
-              ref={navItemsRef}
-              style={{ ...style, ...transitionStyles[state] }}
-            >
+            <ul ref={navItemsRef} style={{ ...transitionStyles[state] }}>
               {children}
             </ul>
           )}

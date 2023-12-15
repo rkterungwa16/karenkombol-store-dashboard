@@ -1,7 +1,7 @@
 import { FC, SVGProps } from "react";
 import Svg from "../svg/Svg";
 
-export const Userscon: FC<SVGProps<SVGSVGElement>> = ({ ...props }) => {
+export const UsersIcon: FC<SVGProps<SVGSVGElement>> = ({ ...props }) => {
   return (
     <Svg {...props}>
       <path

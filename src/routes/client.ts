@@ -3,6 +3,8 @@ export enum ClientRoutes {
   LOGIN = "/login",
   DASHBOARD = "/dashboard",
   PRODUCT = "/products",
+  ROLES = "/roles",
+  USERS = "/users",
 }
 
 export enum ProductClientRoutes {
