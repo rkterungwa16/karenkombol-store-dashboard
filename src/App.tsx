@@ -38,6 +38,14 @@ class App extends Component {
               </Suspense>
             }
           />
+          <Route
+            path={`${ClientRoutes.PRODUCT}/:category`}
+            element={
+              <Suspense fallback={<>...</>}>
+                <DashboardPage />
+              </Suspense>
+            }
+          />
           {/* <Route
             path="/dashboard"
             element={

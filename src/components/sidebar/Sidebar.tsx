@@ -23,6 +23,7 @@ export type SidebarProps = {
   overlaid?: boolean;
   position?: "fixed" | "sticky";
   size?: "sm" | "lg" | "xl";
+  currentPage: string;
   navItems: NavItemDataProps[];
   // children: (data: {
   //   currentOpenItem?: string;
@@ -30,7 +31,7 @@ export type SidebarProps = {
   // }) => ReactNode;
 };
 
-export const Sidebar: FC<SidebarProps> = ({ navItems }) => {
+export const Sidebar: FC<SidebarProps> = ({ navItems, currentPage }) => {
   const [items, setOpenItem] = useState(navItems);
   const handleSetCurrentOpenItem = (name: string) => {
     const itemExists = items.find(
@@ -63,7 +64,7 @@ export const Sidebar: FC<SidebarProps> = ({ navItems }) => {
             const Component = component;
             return (
               <Component
-                // active={false}
+                active={_item.to === currentPage}
                 // className=""
                 // disabled={false}
                 hover={{
@@ -86,7 +87,7 @@ export const Sidebar: FC<SidebarProps> = ({ navItems }) => {
             const Component = component;
             return (
               <Component
-                // active={false}
+                active={currentPage.includes(name.toLowerCase())}
                 // className=""
                 // disabled={false}
                 toggler={
@@ -106,12 +107,17 @@ export const Sidebar: FC<SidebarProps> = ({ navItems }) => {
                       const Component = component;
                       return (
                         <Component
-                          // active={false}
+                          active={_item.to === currentPage}
                           // className=""
                           // disabled={false}
                           href={to}
                           key={index}
-                          pl="pl-4"
+                          // pl="pl-2"
+                          customLink={{
+                            props: {
+                              ml: "ml-4"
+                            }
+                          }}
                           display="flex"
                           alignItems="center"
                           hover={{

@@ -1,5 +1,7 @@
+import { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { StyledBoxAreaProps, generateComponentBoxAreaStyle } from "../../utils/box-area";
 
 export const StyledLink = styled.a`
   text-decoration: none;
@@ -12,6 +14,10 @@ export const StyledLink = styled.a`
   width: 100%;
 `;
 
+export interface StyledRouterLinkProps extends StyledBoxAreaProps {
+  children?: ReactNode;
+}
+
 export const StyledRouterLink = styled(Link)`
   text-decoration: none;
   white-space: nowrap;
@@ -20,5 +26,14 @@ export const StyledRouterLink = styled(Link)`
   display: flex;
   color: inherit;
   width: 100%;
+  ${(props: StyledRouterLinkProps) => {
+    const { ...others } = props;
+    const style = `
+      ${generateComponentBoxAreaStyle({
+        ...others,
+      })}
+    `;
+    return style;
+  }}
 `;
 

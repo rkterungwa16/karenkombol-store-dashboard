@@ -1,5 +1,5 @@
-import { CSSProperties, ReactElement, forwardRef } from "react";
-import { CustomLink, LinkAttrProps } from "../link";
+import { CSSProperties, ElementType, ReactElement, forwardRef } from "react";
+import { CustomLink, CustomLinkProps, LinkAttrProps } from "../link";
 import { mapNavItemElements } from "./styles";
 import { generateStyledComponentPropKeys } from "../../utils/styledComponentPropKeys";
 import { BoxAreaProps } from "../../utils/box-area";
@@ -11,9 +11,14 @@ export interface NavItemProps extends LinkAttrProps, BoxAreaProps {
   display?: CSSProperties["display"];
   alignItems?: CSSProperties["alignItems"];
   justifyContent?: CSSProperties["justifyContent"];
+  active?: boolean;
   hover?: {
     background: CSSProperties["background"];
     color: CSSProperties["color"];
+  };
+  customLink?: {
+    component?: ElementType;
+    props?: CustomLinkProps;
   };
 }
 export const NavItem = forwardRef<HTMLLIElement, NavItemProps>(
@@ -28,6 +33,7 @@ export const NavItem = forwardRef<HTMLLIElement, NavItemProps>(
       disabled,
       component = "li",
       hover,
+      customLink,
       ...others
     },
     ref,
@@ -38,6 +44,7 @@ export const NavItem = forwardRef<HTMLLIElement, NavItemProps>(
         <Component
           $hover={hover}
           ref={ref}
+          $active={active}
           {...generateStyledComponentPropKeys(others)}
         >
           {icon && icon}
@@ -51,6 +58,10 @@ export const NavItem = forwardRef<HTMLLIElement, NavItemProps>(
               component: StyledRouterLink,
               props: {
                 to: href,
+                ...(customLink &&
+                  customLink.props && {
+                    ...customLink.props,
+                  }),
               },
             }}
           >
@@ -64,6 +75,7 @@ export const NavItem = forwardRef<HTMLLIElement, NavItemProps>(
       <Component
         className={className}
         $hover={hover}
+        $active={active}
         ref={ref}
         {...generateStyledComponentPropKeys(others)}
         onClick={onClick}

@@ -11,6 +11,7 @@ export interface StyledNavItemElementProps extends StyledBoxAreaProps {
   $display?: CSSProperties["display"];
   $alignItems?: CSSProperties["alignItems"];
   $justifyContent?: CSSProperties["justifyContent"];
+  $active?: boolean;
   $hover?: {
     background: CSSProperties["background"];
     color: CSSProperties["color"];
@@ -21,9 +22,14 @@ export const StyledNavItemLi = styled.li`
   width: 100%;
   cursor: pointer;
   ${(props: StyledNavItemElementProps) => {
-    const { $alignItems, $display, $hover, ...others } = props;
+    const { $alignItems, $display, $hover, $active, ...others } = props;
     const alignItems = $alignItems ? `align-items: ${$alignItems};` : "";
     const display = $display ? `display: ${$display}` : "";
+    const active = $active
+      ? `background: ${$hover?.background};
+    color: ${$hover?.color};`
+      : "";
+
     const hover = $hover
       ? `&:hover {
       background: ${$hover.background};
@@ -34,6 +40,7 @@ export const StyledNavItemLi = styled.li`
       ${alignItems};
       ${display};
       ${hover};
+      ${active};
       ${generateComponentBoxAreaStyle({
         ...others,
       })}
@@ -46,9 +53,14 @@ export const StyledNavItemDiv = styled.div`
   width: 100%;
   cursor: pointer;
   ${(props: StyledNavItemElementProps) => {
-    const { $alignItems, $display, $hover, ...others } = props;
+    const { $alignItems, $display, $hover, $active, ...others } = props;
     const alignItems = $alignItems ? `align-items: ${$alignItems};` : "";
     const display = $display ? `display: ${$display}` : "";
+    const active = $active
+      ? `background: ${$hover?.background};
+    color: ${$hover?.color};`
+      : "";
+
     const hover = $hover
       ? `&:hover {
       background: ${$hover.background};
@@ -59,6 +71,7 @@ export const StyledNavItemDiv = styled.div`
       ${alignItems};
       ${display};
       ${hover};
+      ${active};
       ${generateComponentBoxAreaStyle({
         ...others,
       })}
