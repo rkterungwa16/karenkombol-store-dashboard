@@ -1,7 +1,7 @@
 // import { CNavGroup, NavItem, CNavTitle } from './'
 
 import { ClientRoutes, ProductClientRoutes } from "../../routes/client";
-import { RectangularGroupIcon, TagIcon, UserGroupIcon } from "../icons";
+import { RectangularGroupIcon, TagIcon, UserGroupIcon, UsersIcon } from "../icons";
 import { NavGroup } from "../nav/NavGroup";
 import { NavItem } from "../nav/NavItem";
 import { NavItemDataProps } from "../sidebar/types";
@@ -62,5 +62,12 @@ export const navItems: NavItemDataProps[] = [
     name: "Roles",
     to: ClientRoutes.ROLES,
     icon: UserGroupIcon,
+  },
+  {
+    component: NavItem,
+    type: "item",
+    name: "Users",
+    to: ClientRoutes.USERS,
+    icon: UsersIcon,
   },
 ];
