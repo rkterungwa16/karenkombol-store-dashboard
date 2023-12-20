@@ -1,4 +1,4 @@
-import { ElementType, FC } from "react";
+import { ElementType, FC, useCallback, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -16,6 +16,7 @@ import { loginUserAsync } from "../../services/login/login-async";
 import { AppDispatch } from "../../store";
 import { loginSelector } from "../../services/login/login-selector";
 import { useFormValidation, loginFormValidatorSchema } from "../../utils/hooks";
+import { ClientRoutes } from "../../routes/client";
 
 export type LoginFormProps = {
   Header?: ElementType;
@@ -35,19 +36,26 @@ export const LoginForm: FC<LoginFormProps> = ({ Header }) => {
 
   const handleLogin = async () => {
     try {
-      // localStorage.setItem('token', token);
       dispatch(
         loginUserAsync({
           email: formValues.email.toString(),
           password: formValues.password.toString(),
         }),
       );
-      navigate("/dashboard", { replace: true });
     } catch (e) {
       // setStatus(e);
     }
   };
-  console.log("login____", loginData);
+  const handleNavigate = useCallback(() => {
+    if (loginData?.token) {
+      navigate(ClientRoutes.DASHBOARD, { replace: true });
+    }
+  }, [loginData, navigate]);
+
+  useEffect(() => {
+    handleNavigate();
+  }, [handleNavigate]);
+
   return (
     <StyledFormWrapper>
       {Header && <Header />}

@@ -2,7 +2,7 @@ import { Component, Suspense, lazy } from "react";
 import { Route, BrowserRouter, Routes } from "react-router-dom";
 import { ClientRoutes } from "./routes/client";
 
-// import PrivateRoute from "./components/private-route";
+import PrivateRoute from "./components/private-route/PrivateRoute";
 
 const LoginPage = lazy(() => import("./pages/login"));
 const SignupPage = lazy(() => import("./pages/signup"));
@@ -36,17 +36,21 @@ class App extends Component {
           <Route
             path={ClientRoutes.DASHBOARD}
             element={
-              <Suspense fallback={<>...</>}>
-                <DashboardPage />
-              </Suspense>
+              <PrivateRoute>
+                <Suspense fallback={<>...</>}>
+                  <DashboardPage />
+                </Suspense>
+              </PrivateRoute>
             }
           />
           <Route
             path={`${ClientRoutes.PRODUCT}/:category`}
             element={
-              <Suspense fallback={<>...</>}>
-                <ProductsPage />
-              </Suspense>
+              <PrivateRoute>
+                <Suspense fallback={<>...</>}>
+                  <ProductsPage />
+                </Suspense>
+              </PrivateRoute>
             }
           />
           <Route

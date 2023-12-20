@@ -6,7 +6,7 @@ export const loginUserAsync = createAsyncThunk(
   async (
     {
       email,
-      password
+      password,
     }: {
       email: string;
       password: string;
@@ -15,11 +15,11 @@ export const loginUserAsync = createAsyncThunk(
   ) => {
     const response = await login({
       email,
-      password
+      password,
     });
     thunkAPI.dispatch({
       type: "users/login-success",
     });
-    return response.accessToken;
+    return response?.data?.accessToken;
   },
 );
