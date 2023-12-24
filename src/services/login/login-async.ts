@@ -1,11 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { login, refreshToken } from "./login-api";
-import { RequestOptions } from "../types";
+import { RequestWithPayloadOptions } from "../types";
 import { LoginData } from "./types";
 
 export const loginUserAsync = createAsyncThunk(
   "users/login",
-  async (requestOptions: RequestOptions<LoginData>, thunkAPI) => {
+  async (requestOptions: RequestWithPayloadOptions<LoginData>, thunkAPI) => {
     try {
       const response = await login(requestOptions);
       thunkAPI.dispatch({

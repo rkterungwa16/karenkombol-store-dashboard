@@ -1,10 +1,12 @@
 import { CookieNames } from "../../components/auth/constants";
 import { BASE_URL } from "../../constants";
 import { Api } from "../../routes/api";
-import { RequestOptions } from "../types";
+import { RequestWithPayloadOptions } from "../types";
 import { LoginData } from "./types";
 
-export async function login(requestOptions: RequestOptions<LoginData>) {
+export async function login(
+  requestOptions: RequestWithPayloadOptions<LoginData>,
+) {
   const response = await fetch(`${BASE_URL}${Api.LOGIN}`, {
     method: "POST",
     headers: {

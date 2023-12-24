@@ -1,9 +1,11 @@
-export type RequestOptions<T> = {
-  payload?: T;
+export type RequestOptions = {
   query?: string;
   headers?: HeadersInit;
 }
-
+export type RequestWithPayloadOptions<T> = {
+  payload?: T;
+  headers?: HeadersInit;
+}
 export type StringFilter = {
   $eq?: string;
   $contains?: string;
