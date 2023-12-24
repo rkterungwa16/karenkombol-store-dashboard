@@ -1,12 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loginUserAsync } from "./login-async";
-
-export interface LoginState {
-  token: string;
-}
+import { loginUserAsync, refreshUserLoginAsync } from "./login-async";
+import { LoginState } from "./types";
 
 const initialState: LoginState = {
   token: "",
+  refreshToken: "",
 };
 
 export const loginSlice = createSlice({
@@ -15,9 +13,23 @@ export const loginSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     // Add reducers for additional action types here, and handle loading state as needed
-    builder.addCase(loginUserAsync.fulfilled, (state, action) => {
-      state.token = action.payload;
-    });
+    builder
+      .addCase(loginUserAsync.fulfilled, (state, action) => {
+        state.token = action.payload.accessToken;
+        state.refreshToken = action.payload.refreshToken;
+      })
+      .addCase(loginUserAsync.rejected, (state) => {
+        state.token = "";
+        state.refreshToken = "";
+      })
+      .addCase(refreshUserLoginAsync.fulfilled, (state, action) => {
+        state.token = action.payload.accessToken;
+        state.refreshToken = action.payload.refreshToken;
+      })
+      .addCase(refreshUserLoginAsync.rejected, (state) => {
+        state.token = "";
+        state.refreshToken = "";
+      })
   },
 });
 

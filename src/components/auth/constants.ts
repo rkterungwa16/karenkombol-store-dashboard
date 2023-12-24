@@ -8,3 +8,8 @@ export enum FormTexts {
   SIGNUP_BUTTON = "Sign up",
   LOGIN_BUTTON = "Login",
 }
+
+export enum CookieNames {
+  REFRESH_TOKEN = 'x-refresh-token',
+  ACCESS_TOKEN = 'x-access-token',
+}

@@ -38,12 +38,15 @@ export const LoginForm: FC<LoginFormProps> = ({ Header }) => {
     try {
       dispatch(
         loginUserAsync({
-          email: formValues.email.toString(),
-          password: formValues.password.toString(),
+          payload: {
+            email: formValues.email.toString(),
+            password: formValues.password.toString(),
+          },
         }),
       );
     } catch (e) {
       // setStatus(e);
+      // If error stay in the login page.
     }
   };
   const handleNavigate = useCallback(() => {
