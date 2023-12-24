@@ -4,7 +4,7 @@ import { RequestOptions } from "../types";
 
 export const fetchRolesAsync = createAsyncThunk(
   "roles/fetch",
-  async (requestOptions: RequestOptions) => {
+  async (requestOptions?: RequestOptions) => {
     try {
       const response = await fetchRoles(requestOptions);
       return response?.data;

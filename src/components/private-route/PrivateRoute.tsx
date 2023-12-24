@@ -9,6 +9,11 @@ export const PrivateRoute = ({ children }: { children: JSX.Element }) => {
   const location = useLocation();
   const token = loginData?.token;
 
+  // if no token in redux store, get refresh token from local storage. refresh to get new access token
+  // every access token is connected with its refresh token.
+  // - Every refresh makes previous refresh token invalid. and previous access token is invalid.
+  // - Every refresh token expiration will make the user to login again. And create a new token
+
   if (!token) {
     return (
       <Navigate
