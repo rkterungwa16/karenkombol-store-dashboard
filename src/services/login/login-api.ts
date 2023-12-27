@@ -14,8 +14,7 @@ export async function login(
     },
     body: JSON.stringify(requestOptions?.payload),
   });
-  const responseWithJson = await response.json();
-  return responseWithJson;
+  return await response.json();
 }
 export async function refreshToken(refreshToken: string) {
   const headers = new Headers({

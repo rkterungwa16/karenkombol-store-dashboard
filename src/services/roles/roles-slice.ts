@@ -20,10 +20,12 @@ export type Role = {
 
 export interface RolesState {
   roles: Role[];
+  error: string;
 }
 
 const initialState: RolesState = {
   roles: [],
+  error: ""
 };
 // Add error states.
 export const rolesSlice = createSlice({
@@ -36,8 +38,8 @@ export const rolesSlice = createSlice({
       .addCase(fetchRolesAsync.fulfilled, (state, action) => {
         state.roles = action.payload;
       })
-      .addCase(fetchRolesAsync.rejected, (state) => {
-        state.roles = [];
+      .addCase(fetchRolesAsync.rejected, (state, action) => {
+        state.error = action?.error?.message || "";
       });
   },
 });
