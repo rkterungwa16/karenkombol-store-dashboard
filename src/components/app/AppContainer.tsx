@@ -16,7 +16,11 @@ export const AppContainer: FC<AppProps> = ({ children }) => {
 
   const handleNavigate = useCallback(() => {
     if (loginData?.token) {
-      dispatch(fetchRolesAsync());
+      dispatch(fetchRolesAsync({
+        headers: {
+          authorization: `Bearer ${loginData.token}`,
+        }
+      }));
     }
   }, [loginData, dispatch]);
 

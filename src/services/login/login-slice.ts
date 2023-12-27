@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { loginUserAsync, refreshUserLoginAsync } from "./login-async";
 import { LoginState } from "./types";
+import { setAccessToken } from "./login-actions";
 
 const initialState: LoginState = {
   token: "",
@@ -18,6 +19,10 @@ export const loginSlice = createSlice({
       .addCase(loginUserAsync.fulfilled, (state, action) => {
         state.token = action.payload.accessToken;
         state.refreshToken = action.payload.refreshToken;
+        window?.sessionStorage.setItem(
+          "kka-access-token",
+          action.payload.accessToken,
+        );
       })
       .addCase(loginUserAsync.rejected, (state, action) => {
         state.error = action?.error?.message || "";
@@ -29,6 +34,9 @@ export const loginSlice = createSlice({
       .addCase(refreshUserLoginAsync.rejected, (state) => {
         state.token = "";
         state.refreshToken = "";
+      })
+      .addCase(setAccessToken, (state, action) => {
+        state.token = action.payload;
       });
   },
 });

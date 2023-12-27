@@ -1,18 +1,19 @@
 import { Navigate, useLocation } from "react-router-dom";
 
 import { ClientRoutes } from "../../routes/client";
-import { useSelector } from "react-redux";
-import { loginSelector } from "../../services/login/login-selector";
+import { setAccessToken } from "../../services/login/login-actions";
+import { useDispatch } from "react-redux";
 
 export const PrivateRoute = ({ children }: { children: JSX.Element }) => {
-  const loginData = useSelector(loginSelector);
   const location = useLocation();
-  const token = loginData?.token;
+  const dispatch = useDispatch();
+  const token = window?.sessionStorage.getItem("kka-access-token");
 
   // if no token in redux store, get refresh token from local storage. refresh to get new access token
   // every access token is connected with its refresh token.
   // - Every refresh makes previous refresh token invalid. and previous access token is invalid.
   // - Every refresh token expiration will make the user to login again. And create a new token
+  // If a user has access to refresh token, use it to get a new access token. But will that be a problem?
 
   if (!token) {
     return (
@@ -23,6 +24,8 @@ export const PrivateRoute = ({ children }: { children: JSX.Element }) => {
       />
     );
   }
+
+  dispatch(setAccessToken(token));
 
   return children;
 };
