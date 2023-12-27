@@ -14,11 +14,8 @@ export async function login(
     },
     body: JSON.stringify(requestOptions?.payload),
   });
-  console.log(
-    "response.headers.getSetCookie()",
-    response.headers.getSetCookie(),
-  );
-  return await response.json();
+  const responseWithJson = await response.json();
+  return responseWithJson;
 }
 export async function refreshToken(refreshToken: string) {
   const headers = new Headers({

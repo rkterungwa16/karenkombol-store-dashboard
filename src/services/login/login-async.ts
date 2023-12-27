@@ -5,18 +5,12 @@ import { LoginData } from "./types";
 
 export const loginUserAsync = createAsyncThunk(
   "users/login",
-  async (requestOptions: RequestWithPayloadOptions<LoginData>, thunkAPI) => {
-    try {
-      const response = await login(requestOptions);
-      thunkAPI.dispatch({
-        type: "users/login-success",
-      });
+  async (requestOptions: RequestWithPayloadOptions<LoginData>) => {
+    const response = await login(requestOptions);
+    if (response?.data) {
       return response?.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue({
-        token: "",
-      });
     }
+    throw new Error(response?.message);
   },
 );
 

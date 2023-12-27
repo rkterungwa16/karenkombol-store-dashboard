@@ -5,6 +5,7 @@ import { LoginState } from "./types";
 const initialState: LoginState = {
   token: "",
   refreshToken: "",
+  error: "",
 };
 
 export const loginSlice = createSlice({
@@ -18,9 +19,8 @@ export const loginSlice = createSlice({
         state.token = action.payload.accessToken;
         state.refreshToken = action.payload.refreshToken;
       })
-      .addCase(loginUserAsync.rejected, (state) => {
-        state.token = "";
-        state.refreshToken = "";
+      .addCase(loginUserAsync.rejected, (state, action) => {
+        state.error = action?.error?.message || "";
       })
       .addCase(refreshUserLoginAsync.fulfilled, (state, action) => {
         state.token = action.payload.accessToken;
@@ -29,7 +29,7 @@ export const loginSlice = createSlice({
       .addCase(refreshUserLoginAsync.rejected, (state) => {
         state.token = "";
         state.refreshToken = "";
-      })
+      });
   },
 });
 

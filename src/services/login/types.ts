@@ -6,4 +6,5 @@ export type LoginData = {
 export interface LoginState {
   token: string;
   refreshToken: string;
+  error: string;
 }
