@@ -56,17 +56,21 @@ class App extends Component {
           <Route
             path={`${ClientRoutes.ROLES}`}
             element={
-              <Suspense fallback={<>...</>}>
-                <RolesPage />
-              </Suspense>
+              <PrivateRoute>
+                <Suspense fallback={<>...</>}>
+                  <RolesPage />
+                </Suspense>
+              </PrivateRoute>
             }
           />
           <Route
             path={`${ClientRoutes.USERS}`}
             element={
-              <Suspense fallback={<>...</>}>
-                <UsersPage />
-              </Suspense>
+              <PrivateRoute>
+                <Suspense fallback={<>...</>}>
+                  <UsersPage />
+                </Suspense>
+              </PrivateRoute>
             }
           />
           {/* <Route

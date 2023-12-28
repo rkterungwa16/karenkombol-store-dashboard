@@ -24,7 +24,7 @@ export const PrivateRoute = ({ children }: { children: JSX.Element }) => {
       />
     );
   }
-
+  console.log('token', token);
   dispatch(setAccessToken(token));
 
   return children;

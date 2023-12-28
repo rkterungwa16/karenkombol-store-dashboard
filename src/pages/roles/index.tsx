@@ -27,6 +27,7 @@ export const Roles = () => {
   useEffect(() => {
     handleFetchRoles();
   }, [handleFetchRoles]);
+
   return (
     <AppContainer>
       <Content></Content>
