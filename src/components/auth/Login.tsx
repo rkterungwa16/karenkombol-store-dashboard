@@ -22,6 +22,7 @@ export type LoginFormProps = {
   Header?: ElementType;
 };
 export const LoginForm: FC<LoginFormProps> = ({ Header }) => {
+  const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const loginData = useSelector(loginSelector);
   const { handleChange, formValues, errors } = useFormValidation(
@@ -31,8 +32,6 @@ export const LoginForm: FC<LoginFormProps> = ({ Header }) => {
     },
     loginFormValidatorSchema,
   );
-
-  const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
@@ -50,7 +49,7 @@ export const LoginForm: FC<LoginFormProps> = ({ Header }) => {
     }
   };
   const handleNavigate = useCallback(() => {
-    if (loginData?.token) {
+    if (loginData?.status === 200) {
       navigate(ClientRoutes.DASHBOARD, { replace: true });
     }
   }, [loginData, navigate]);

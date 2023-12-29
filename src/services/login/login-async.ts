@@ -5,28 +5,25 @@ import { LoginData } from "./types";
 
 export const loginUserAsync = createAsyncThunk(
   "users/login",
-  async (requestOptions: RequestWithPayloadOptions<LoginData>) => {
+  async (requestOptions: RequestWithPayloadOptions<LoginData>, thunkAPI) => {
     const response = await login(requestOptions);
     if (response?.data) {
-      return response?.data;
+      return response;
     }
-    throw new Error(response?.message);
+    return thunkAPI.rejectWithValue(response);
   },
 );
 
 export const refreshUserLoginAsync = createAsyncThunk(
   "users/refresh-login",
   async (token: string, thunkAPI) => {
-    try {
-      const response = await refreshToken(token);
+    const response = await refreshToken(token);
+    if (response?.data) {
       thunkAPI.dispatch({
         type: "users/refresh-login-success",
       });
-      return response?.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue({
-        token: "",
-      });
+      return response;
     }
+    return thunkAPI.rejectWithValue(response);
   },
 );

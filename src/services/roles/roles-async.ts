@@ -4,12 +4,12 @@ import { RequestOptions } from "../types";
 
 export const fetchRolesAsync = createAsyncThunk(
   "roles/fetch",
-  async (requestOptions?: RequestOptions) => {
+  async (requestOptions: RequestOptions, thunkAPI) => {
     const response = await fetchRoles(requestOptions);
     if (response?.data) {
-      return response?.data;
+      return response;
     }
-    throw new Error(response?.message);
+
+    return thunkAPI.rejectWithValue(response);
   },
 );
-

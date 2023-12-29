@@ -4,6 +4,7 @@ export type LoginData = {
 };
 
 export interface LoginState {
+  status: number | null;
   token: string;
   refreshToken: string;
   error: string;

@@ -7,6 +7,7 @@ const initialState: LoginState = {
   token: "",
   refreshToken: "",
   error: "",
+  status: null,
 };
 
 export const loginSlice = createSlice({
@@ -17,15 +18,21 @@ export const loginSlice = createSlice({
     // Add reducers for additional action types here, and handle loading state as needed
     builder
       .addCase(loginUserAsync.fulfilled, (state, action) => {
-        state.token = action.payload.accessToken;
-        state.refreshToken = action.payload.refreshToken;
+        state.token = action.payload.data.accessToken;
+        state.refreshToken = action.payload.data.refreshToken;
+        state.status = action.payload.status;
         window?.sessionStorage.setItem(
           "kka-access-token",
           action.payload.accessToken,
         );
       })
       .addCase(loginUserAsync.rejected, (state, action) => {
-        state.error = action?.error?.message || "";
+        const payload = action?.payload as {
+          message: string;
+          status: number | null;
+        };
+        state.error = payload?.message || "";
+        state.status = payload?.status || null;
       })
       .addCase(refreshUserLoginAsync.fulfilled, (state, action) => {
         state.token = action.payload.accessToken;
