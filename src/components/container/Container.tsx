@@ -13,4 +13,4 @@ export const Container = forwardRef<HTMLDivElement, ContainerProps>(
   },
 );
 
-Container.displayName = "HeaderContainer";
+Container.displayName = "Container";

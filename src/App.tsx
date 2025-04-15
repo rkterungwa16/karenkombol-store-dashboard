@@ -36,11 +36,14 @@ class App extends Component {
           <Route
             path={ClientRoutes.DASHBOARD}
             element={
-              <PrivateRoute>
-                <Suspense fallback={<>...</>}>
-                  <DashboardPage />
-                </Suspense>
-              </PrivateRoute>
+              // <PrivateRoute>
+              //   <Suspense fallback={<>...</>}>
+              //     <DashboardPage />
+              //   </Suspense>
+              // </PrivateRoute>
+              <Suspense fallback={<>...</>}>
+                <DashboardPage />
+              </Suspense>
             }
           />
           <Route

@@ -38,7 +38,6 @@ export const StyledFormTextElementsWrapper = styled.div`
 `;
 
 export const StyledInput = styled.input`
-  width: 100%;
   border-radius: 0.8rem;
   border: none;
   margin-top: 0.25rem;

@@ -23,11 +23,10 @@ export const Login = () => {
   return (
     <Container
       height="100vh"
-      width="100%"
       display="flex"
       justifyContent="center"
       alignItems="center"
-      p = "p-0"
+      p = "p-2"
     >
       <LoginForm Header={Header} />
     </Container>
